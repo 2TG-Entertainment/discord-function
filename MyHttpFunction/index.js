@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 const {
   TableServiceClient,
   AzureNamedKeyCredential,
@@ -7,8 +5,9 @@ const {
 
 // Configure your storage account settings here
 const tableName = "discord";
-const account = process.env.ACCOUNT_NAME;
-const accountKey = process.env.ACCOUNT_KEY;
+const account = "discord";
+const accountKey =
+  "exqh2BAHHVtnwQlZwPaFByhVuuCPuP/feYlx1tO8JXVWqlTn71wwp0Jwt/2QD09hbY+UnU/6Zb+K+ASt7Xtfhg==";
 
 // Create a service client
 const credential = new AzureNamedKeyCredential(account, accountKey);

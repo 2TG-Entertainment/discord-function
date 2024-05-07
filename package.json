@@ -7,7 +7,6 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "@azure/data-tables": "^13.2.2",
-    "dotenv": "^16.4.5"
+    "@azure/data-tables": "^13.2.2"
   }
 }
