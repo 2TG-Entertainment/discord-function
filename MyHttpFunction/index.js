@@ -1,12 +1,14 @@
+require("dotenv").config();
+
 const {
   TableServiceClient,
   AzureNamedKeyCredential,
 } = require("@azure/data-tables");
 
 // Configure your storage account settings here
-const tableName = "Usernames";
-const account = "<your_storage_account_name>";
-const accountKey = "<your_storage_account_key>";
+const tableName = "discord";
+const account = process.env.ACCOUNT_NAME;
+const accountKey = process.env.ACCOUNT_KEY;
 
 // Create a service client
 const credential = new AzureNamedKeyCredential(account, accountKey);
@@ -22,7 +24,6 @@ module.exports = async function (context, req) {
   if (username) {
     try {
       const tableClient = serviceClient.getTableClient(tableName);
-      await tableClient.createTable();
       const entity = {
         partitionKey: "DiscordUsername",
         rowKey: `${new Date().getTime()}`, // Use timestamp as unique key
@@ -40,9 +41,10 @@ module.exports = async function (context, req) {
       };
     }
   } else {
+    // If no username is provided, just respond positively without doing anything
     context.res = {
-      status: 400,
-      body: "Please pass a username in the request body",
+      status: 200, // Or consider using a different status code if you need to indicate no action was taken
+      body: "No username provided, proceeding without storing any data.",
     };
   }
 };
