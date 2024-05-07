@@ -1,0 +1,12 @@
+{
+  "name": "store-discord-uername",
+  "version": "1.0.0",
+  "description": "Azure function for capturing discrod usernames.",
+  "scripts": {
+    "start": "func start",
+    "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "@azure/data-tables": "^13.2.2"
+  }
+}
